@@ -1,0 +1,15 @@
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\bin\Debug\net6.0\CoreEscuela.exe
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\bin\Debug\net6.0\CoreEscuela.deps.json
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\bin\Debug\net6.0\CoreEscuela.runtimeconfig.json
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\bin\Debug\net6.0\CoreEscuela.dll
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\bin\Debug\net6.0\CoreEscuela.pdb
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.csproj.AssemblyReference.cache
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.AssemblyInfoInputs.cache
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.AssemblyInfo.cs
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.csproj.CoreCompileInputs.cache
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.dll
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\refint\CoreEscuela.dll
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.pdb
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\CoreEscuela.genruntimeconfig.cache
+C:\Users\Mauricio PC\Desktop\Development\.Net\.Net\CoreEscuela\obj\Debug\net6.0\ref\CoreEscuela.dll
