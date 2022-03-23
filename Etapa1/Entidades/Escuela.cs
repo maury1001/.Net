@@ -31,7 +31,7 @@ namespace CoreEscuela.Escuela
 
         public override string ToString()
         {
-            return $"Nombre{Nombre}, Tipo{TipoEscuela} \n Pais{Pais}, Ciudad{Ciudad}";
+            return $"Nombre:{Nombre}, Tipo:{TipoEscuela} \n Pais:{Pais}, Ciudad:{Ciudad}";
         }
     }
 }
