@@ -19,7 +19,7 @@ namespace CoreEscuela.Escuela
         
         public TiposEscuela TipoEscuela{get;set;}
 
-        public Curso[] Cursos {get;set;}
+        public List<Curso> Cursos {get;set;}
 
 
         //constructor tradicional
