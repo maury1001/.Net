@@ -30,13 +30,25 @@ namespace Etapa1
               new Curso(){Nombre = "502", Jornada = TiposJornada.Tarde}
              };;
 
-            otraColeccion.Clear();
+            
+            Curso tmp = new Curso{Nombre = "Temporal", Jornada = TiposJornada.Noche};
             escuela.Cursos.AddRange(otraColeccion);
-
-            
+            escuela.Cursos.Add(tmp);    
             ImprimirCursosEscuela(escuela);
+
+            // los delegados solo aceptan metodos que devuelvan booleanos y que reciban como parametro el tipo de dato generico 
+            Predicate<Curso> miAlgoritmo = Predicado;
+            escuela.Cursos.RemoveAll(miAlgoritmo);
+            ImprimirCursosEscuela(escuela);
+
+
+        }      
+          
+        private static bool Predicado(Curso curObj)
+        {
+            return curObj.Nombre == "301";
         }
-            
+
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
 
