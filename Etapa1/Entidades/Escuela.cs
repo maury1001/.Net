@@ -19,6 +19,8 @@ namespace CoreEscuela.Escuela
         
         public TiposEscuela TipoEscuela{get;set;}
 
+        public Curso[] Cursos {get;set;}
+
 
         //constructor tradicional
         // public Escuela (string nombre, int año)
@@ -28,10 +30,17 @@ namespace CoreEscuela.Escuela
         // }
         
         public Escuela (string nombre, int año) => (Nombre, AñoDeCreacion) = (nombre, año);
+        public Escuela (string nombre, int año, TiposEscuela tipo, string pais = "", string ciudad = "")
+        {
+            //asignación de tuplas
+            (Nombre, AñoDeCreacion) = (nombre, año);
+            this.Pais = pais;
+            this.Ciudad = ciudad;
+        }
 
         public override string ToString()
-        {
-            return $"Nombre:{Nombre}, Tipo:{TipoEscuela} \n Pais:{Pais}, Ciudad:{Ciudad}";
+        {                                                 //esto es igual a '\n' 
+            return $"Nombre:{Nombre}, Tipo:{TipoEscuela} {System.Environment.NewLine} Pais:{Pais}, Ciudad:{Ciudad}";
         }
     }
 }
