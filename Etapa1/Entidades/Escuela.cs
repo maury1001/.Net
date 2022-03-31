@@ -1,8 +1,9 @@
 using CoreEscuela.Entidades;
+using System.Collections.Generic;
 
-namespace CoreEscuela.Escuela
+namespace CoreEscuela.Entidades
 {
-    class Escuela
+    public class Escuela
     {
         string nombre;
 

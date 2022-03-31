@@ -1,53 +1,19 @@
 ﻿using System;
 using CoreEscuela.Entidades;
-using CoreEscuela.Escuela;
 using static System.Console;
 
 
-namespace Etapa1
+namespace CoreEscuela
 {
     class Program
     {
 
         static void Main(string[] args)
         {
-            var escuela = new Escuela("UNTDF",2013, TiposEscuela.Primaria, "Argentina", "Ushuaia");
-            Console.WriteLine(escuela);
-
-            var listaCursos = new List<Curso>(){
-             new Curso(){Nombre = "101", Jornada = TiposJornada.Mañana},
-             new Curso(){Nombre = "201", Jornada = TiposJornada.Mañana},
-             new Curso(){Nombre = "301", Jornada = TiposJornada.Mañana}
-            };;
-
-            escuela.Cursos = listaCursos;
-            escuela.Cursos.Add(new Curso{Nombre = "102", Jornada = TiposJornada.Tarde});
-            escuela.Cursos.Add(new Curso{Nombre = "202", Jornada = TiposJornada.Tarde});
-
-            var otraColeccion = new List<Curso>(){
-              new Curso(){Nombre = "401", Jornada = TiposJornada.Mañana},
-              new Curso(){Nombre = "501", Jornada = TiposJornada.Mañana},
-              new Curso(){Nombre = "502", Jornada = TiposJornada.Tarde}
-             };;
-
-            
-            Curso tmp = new Curso{Nombre = "Temporal", Jornada = TiposJornada.Noche};
-            escuela.Cursos.AddRange(otraColeccion);
-            escuela.Cursos.Add(tmp);    
-            ImprimirCursosEscuela(escuela);
-
-            // los delegados solo aceptan metodos que devuelvan booleanos y que reciban como parametro el tipo de dato generico 
-            Predicate<Curso> miAlgoritmo = Predicado;
-            escuela.Cursos.RemoveAll(miAlgoritmo);
-            ImprimirCursosEscuela(escuela);
-
-
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
         }      
           
-        private static bool Predicado(Curso curObj)
-        {
-            return curObj.Nombre == "301";
-        }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
