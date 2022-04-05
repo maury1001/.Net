@@ -1,6 +1,7 @@
 ﻿using System;
 using CoreEscuela.Entidades;
 using static System.Console;
+using CoreEscuela.Util;
 
 
 namespace CoreEscuela
@@ -12,16 +13,14 @@ namespace CoreEscuela
         {
             var engine = new EscuelaEngine();
             engine.Inicializar();
+            ImprimirCursosEscuela(engine.Escuela);
         }      
           
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
 
-            WriteLine("====================");
-            WriteLine("Cursos de la Escuela");
-            WriteLine("====================");
-            
+            Printer.WriteTitle("Cursos de la Escuela");        
                 //El carácter ? usado dentro de una condicional que contenga como parámetro de evaluación un objeto con un atributo, sirve para indicarle a 
                 //C# que solamente después de verificar la condición en el objeto y esta sea verdadera, pase a verificar la condición en el atributo.
                 // es lo mismo que hacer
