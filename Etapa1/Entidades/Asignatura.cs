@@ -1,19 +1,14 @@
-using System;
 namespace CoreEscuela.Entidades
 {
-    public class Curso
+    public class Asignatura
+
     {
         public string UniqueId { get; private set; }
         public string Nombre { get; set; }
-        public TiposJornada Jornada { get; set; }
 
-        public List<Asignatura> Asignaturas {get;set;}
-        public List<Alumno> Alumno {get;set;}
-
-        public Curso()
+         public Asignatura()
         {
             UniqueId = Guid.NewGuid().ToString();
         }
-
     }
 }
