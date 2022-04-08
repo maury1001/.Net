@@ -14,6 +14,8 @@ namespace CoreEscuela
             var engine = new EscuelaEngine();
             engine.Inicializar();
             ImprimirCursosEscuela(engine.Escuela);
+
+      
         }      
           
 
