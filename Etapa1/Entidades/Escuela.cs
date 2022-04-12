@@ -1,15 +1,17 @@
 using CoreEscuela.Entidades;
+using CoreEscuela.Util;
 using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades
 {
-    public class Escuela: ObjetoEscuelaBase
+    public class Escuela: ObjetoEscuelaBase, ILugar
     {
 
         public int AñoDeCreacion{get;set;}
 
         public string Pais{get;set;}
         public string Ciudad { get; set; }
+        public string Direccion { get; set; }
         
         public TiposEscuela TipoEscuela{get;set;}
 
@@ -36,5 +38,18 @@ namespace CoreEscuela.Entidades
         {                                                 //esto es igual a '\n' 
             return $"Nombre:{Nombre}, Tipo:{TipoEscuela} {System.Environment.NewLine} Pais:{Pais}, Ciudad:{Ciudad}";
         }
+
+        public void LimpiarLugar()
+        {
+            Printer.DibujarLinea();
+            Console.WriteLine("Limpiando Cursos...");
+
+            foreach (var curso in Cursos)
+            {
+                curso.LimpiarLugar();
+            }
+            Console.WriteLine($"Escuela {Nombre} Limpia");
+        }
+
     }
 }

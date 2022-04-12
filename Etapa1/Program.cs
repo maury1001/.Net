@@ -14,6 +14,11 @@ namespace CoreEscuela
             var engine = new EscuelaEngine();
             engine.Inicializar();
             ImprimirCursosEscuela(engine.Escuela);
+            //engine.Escuela.LimpiarLugar();
+            var listaObjetos = engine.GetObjetosEscuela();
+            var listaILugar = from obj in listaObjetos
+                              where obj is ILugar
+                              select (ILugar)obj;
 
       
         }      

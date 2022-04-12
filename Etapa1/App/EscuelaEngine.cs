@@ -18,6 +18,7 @@ namespace CoreEscuela
             CargarEvaluaciones();
         }
 
+#region metodos
         private void CargarAsignaturas()
         {
             foreach (var curso in Escuela.Cursos)
@@ -121,4 +122,5 @@ namespace CoreEscuela
 
 
     }
+#endregion
 }
