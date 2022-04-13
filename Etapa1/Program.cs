@@ -15,7 +15,8 @@ namespace CoreEscuela
             engine.Inicializar();
             ImprimirCursosEscuela(engine.Escuela);
             //engine.Escuela.LimpiarLugar();
-            var listaObjetos = engine.GetObjetosEscuela();
+            int dummy = 0;
+            var listaObjetos = engine.GetObjetosEscuela(out int conteoEvaluaciones,out dummy,out dummy,out dummy);
             var listaILugar = from obj in listaObjetos
                               where obj is ILugar
                               select (ILugar)obj;
