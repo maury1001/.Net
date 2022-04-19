@@ -72,10 +72,38 @@ namespace CoreEscuela
                 }
             }
         }
-         public List<ObjetoEscuelaBase> GetObjetosEscuela(out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,out int conteoAlumnos,
+
+        private void CargarCursos()
+        {
+            Escuela = new Escuela("UNTDF", 2013, TiposEscuela.Primaria, "Argentina", "Ushuaia");
+
+            Escuela.Cursos = new List<Curso>(){
+             new Curso(){Nombre = "101", Jornada = TiposJornada.Mañana},
+             new Curso(){Nombre = "201", Jornada = TiposJornada.Mañana},
+             new Curso(){Nombre = "301", Jornada = TiposJornada.Mañana},
+             new Curso(){Nombre = "401", Jornada = TiposJornada.Tarde},
+             new Curso(){Nombre = "501", Jornada = TiposJornada.Tarde}
+            }; ;
+
+            
+            foreach (var curso in Escuela.Cursos)
+            {
+                //Random rnd = new Random();
+                int cantRandom = new Random().Next(5,20);
+                curso.Alumnos = GenerarAlumnos(cantRandom);
+            }
+        }
+
+        // // los delegados solo aceptan metodos que devuelvan booleanos y que reciban como parametro el tipo de dato generico       
+        // Escuela.Cursos.RemoveAll(delegate(Curso cur){return cur.Nombre == "301";});
+
+        // //delegado como función lambda
+        // Escuela.Cursos.RemoveAll((Curso cur) => cur.Nombre == "501");
+
+
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,out int conteoAlumnos,
                                                           bool traeEvaluaciones = true,bool traeCursos = true,bool traeAsignaturas = true,bool traeAlumnos = true)
             {
-
                 conteoAlumnos = 0;
                 conteoAsignaturas = 0;
                 conteoCursos = 0;
@@ -105,34 +133,23 @@ namespace CoreEscuela
                 return listaObj;
             }
 
-
-
-        private void CargarCursos()
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(bool traeEvaluaciones = true,bool traeCursos = true,bool traeAsignaturas = true,bool traeAlumnos = true)
         {
-            Escuela = new Escuela("UNTDF", 2013, TiposEscuela.Primaria, "Argentina", "Ushuaia");
-
-            Escuela.Cursos = new List<Curso>(){
-             new Curso(){Nombre = "101", Jornada = TiposJornada.Mañana},
-             new Curso(){Nombre = "201", Jornada = TiposJornada.Mañana},
-             new Curso(){Nombre = "301", Jornada = TiposJornada.Mañana},
-             new Curso(){Nombre = "401", Jornada = TiposJornada.Tarde},
-             new Curso(){Nombre = "501", Jornada = TiposJornada.Tarde}
-            }; ;
-
-            
-            foreach (var curso in Escuela.Cursos)
-            {
-                //Random rnd = new Random();
-                int cantRandom = new Random().Next(5,20);
-                curso.Alumnos = GenerarAlumnos(cantRandom);
-            }
+            return GetObjetosEscuela(out int dummy, out dummy, out dummy, out dummy);
+        }
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(out int conteoEvaluaciones,bool traeEvaluaciones = true,bool traeCursos = true,bool traeAsignaturas = true,bool traeAlumnos = true)
+        {
+            return GetObjetosEscuela(out conteoEvaluaciones, out int dummy, out dummy, out dummy);
+        }
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(out int conteoEvaluaciones,out int conteoCursos,bool traeEvaluaciones = true,bool traeCursos = true,bool traeAsignaturas = true,bool traeAlumnos = true)
+        {
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos, out int dummy, out dummy);
+        }
+        public List<ObjetoEscuelaBase> GetObjetosEscuela(out int conteoEvaluaciones,out int conteoCursos,out int conteoAsignaturas,bool traeEvaluaciones = true,bool traeCursos = true,bool traeAsignaturas = true,bool traeAlumnos = true)
+        {
+            return GetObjetosEscuela(out conteoEvaluaciones, out conteoCursos, out conteoAsignaturas, out int dummy);
         }
 
-        // // los delegados solo aceptan metodos que devuelvan booleanos y que reciban como parametro el tipo de dato generico       
-        // Escuela.Cursos.RemoveAll(delegate(Curso cur){return cur.Nombre == "301";});
-
-        // //delegado como función lambda
-        // Escuela.Cursos.RemoveAll((Curso cur) => cur.Nombre == "501");
 
 
 
