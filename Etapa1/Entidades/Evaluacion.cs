@@ -10,7 +10,7 @@ namespace CoreEscuela.Entidades
 
         public override string ToString()
         {
-            return $"{Alumno.Nombre},{Asignatura.Nombre},{Nota}";;
+            return $"{Alumno.Nombre},{Asignatura.Nombre},{"Nota:"+Nota}";
         }
     }
 }

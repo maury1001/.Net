@@ -1,8 +1,8 @@
-﻿using System;
+﻿﻿using System;
 using CoreEscuela.Entidades;
 using static System.Console;
 using CoreEscuela.Util;
-
+using CoreEscuela.App;
 
 namespace CoreEscuela
 {
@@ -11,19 +11,20 @@ namespace CoreEscuela
 
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
             var engine = new EscuelaEngine();
             engine.Inicializar();
-            ImprimirCursosEscuela(engine.Escuela);
-            //engine.Escuela.LimpiarLugar();
-            int dummy = 0;
-            var listaObjetos = engine.GetObjetosEscuela(out int conteoEvaluaciones,out dummy,out dummy,out dummy);
-            var listaILugar = from obj in listaObjetos
-                              where obj is ILugar
-                              select (ILugar)obj;
 
-      
-        }      
-          
+            var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+            var evaList = reporteador.GetListaEvaluaciones();
+            
+
+        }
+
+        private static void AccionDelEvento(object? sender, EventArgs e)
+        {
+            Printer.WriteTitle("FIN PROGRAMA");
+        }
 
         private static void ImprimirCursosEscuela(Escuela escuela)
         {

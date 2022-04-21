@@ -1,6 +1,7 @@
 using CoreEscuela.Entidades;
+using CoreEscuela.Util;
 
-namespace CoreEscuela
+namespace CoreEscuela.App
 {
     public sealed class EscuelaEngine
     {
@@ -47,6 +48,7 @@ namespace CoreEscuela
         }
         private void CargarEvaluaciones()
         {
+            var rnd = new Random();
             var lista = new List<Evaluacion>();
             foreach (var curso in Escuela.Cursos)
             {
@@ -54,7 +56,7 @@ namespace CoreEscuela
                 {
                     foreach (var alumno in curso.Alumnos)
                     {
-                        var rnd = new Random(System.Environment.TickCount);
+                        
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -62,7 +64,7 @@ namespace CoreEscuela
                             {
                                Asignatura = asignatura,
                                Nombre = $"{asignatura.Nombre} Ev#{i +1}",
-                               Nota = (float)(5 * rnd.NextDouble()),
+                               Nota = (float)Math.Round((5 * rnd.NextDouble()), 2),
                                Alumno = alumno         
                             };
                            alumno.Evaluaciones.Add(ev);
@@ -175,6 +177,46 @@ namespace CoreEscuela
                 diccionario.Add(LlaveDiccionario.Alumno,listatmpAlumno.Cast<ObjetoEscuelaBase>());
                 return diccionario;
         }
+
+
+            public void ImprimirDiccionario(Dictionary<LlaveDiccionario,IEnumerable<ObjetoEscuelaBase>> diccionario,bool imprimirEval=false)
+            {
+                foreach (var obj in diccionario)
+                {
+                    Printer.WriteTitle(obj.Key.ToString());
+                    Console.WriteLine(obj);
+
+                    foreach (var valor in obj.Value)
+                    {
+
+                        switch (obj.Key)
+                        {
+                            case LlaveDiccionario.Evaluacion : if(imprimirEval)
+                            {
+                                Console.WriteLine(valor);
+                            }
+                                break;
+                            case LlaveDiccionario.Escuela: Console.WriteLine("Escuela:"+valor);
+                                break;
+
+                            case LlaveDiccionario.Alumno: Console.WriteLine("Alumno:" + valor.Nombre);
+                                break;
+                            case LlaveDiccionario.Curso: 
+                                var curtmp = valor as Curso;
+                                if(curtmp != null)
+                                {
+                                    int count = curtmp.Alumnos.Count;
+                                    Console.WriteLine("Curso:" + valor.Nombre + " Cantidad Alumnos: "+ count);
+                                }
+                                break;
+
+                            default:Console.WriteLine(valor);
+                            break;
+                        }
+                    }
+                }
+            }
+
 
 
     }
