@@ -30,7 +30,11 @@ namespace CoreEscuela.App
         }
         public IEnumerable<string> GetListaAsignaturas()
         {
-            var listaEvaluaciones = GetListaEvaluaciones();
+            return GetListaAsignaturas(out var dummy);
+        }
+        public IEnumerable<string> GetListaAsignaturas(out IEnumerable<Evaluacion>listaEvaluaciones)
+        {
+            listaEvaluaciones = GetListaEvaluaciones();
             
             return (from Evaluacion ev in listaEvaluaciones
                    select ev.Asignatura.Nombre).Distinct();
@@ -40,6 +44,16 @@ namespace CoreEscuela.App
         public Dictionary<string, IEnumerable<Evaluacion>>GetDiccionarioEvaluacionXAsig()
         {
            var diccionarioRta= new Dictionary<string, IEnumerable<Evaluacion>>();
+
+           var listaAsignaturas = GetListaAsignaturas(out var listaEvaluaciones);
+
+            foreach (var asig in listaAsignaturas)
+            {
+                var  evalAsignaturas = from evaluacion in listaEvaluaciones
+                                       where evaluacion.Asignatura.Nombre == asig
+                                       select evaluacion;
+                diccionarioRta.Add(asig, evalAsignaturas);
+            }
 
            return diccionarioRta;
         }
