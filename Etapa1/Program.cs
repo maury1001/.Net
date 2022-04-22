@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using CoreEscuela.Entidades;
 using static System.Console;
 using CoreEscuela.Util;
@@ -19,6 +19,8 @@ namespace CoreEscuela
             var evaList = reporteador.GetListaEvaluaciones();
             var asigList = reporteador.GetListaAsignaturas();
             var listaEvalXAsig = reporteador.GetDiccionarioEvaluacionXAsig();
+            var topProm = reporteador.GetTopPromedios(5);
+            
             
 
         }

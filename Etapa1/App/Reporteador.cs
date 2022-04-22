@@ -59,8 +59,49 @@ namespace CoreEscuela.App
         }
 
 
+        public Dictionary<string,IEnumerable<AlumnoPromedio>> GetPromedioAlumno()
+        {
+            var rta = new Dictionary<string,IEnumerable<AlumnoPromedio>>();
+
+            var diccionarioEvalAsignatura = GetDiccionarioEvaluacionXAsig();
+
+            foreach (var asignConEval in diccionarioEvalAsignatura)
+            {
+                var promediosAlumnos = from eval in asignConEval.Value
+                                       group eval by new {eval.Alumno.UniqueId,
+                                                          eval.Alumno.Nombre}
+                                        into grupoEvalsAlumno
+                                        //objeto anonimo
+                                        select new AlumnoPromedio { alumnoid = grupoEvalsAlumno.Key.UniqueId,
+                                                                    alumnoNombre = grupoEvalsAlumno.Key.Nombre,
+                                                                    promedio = grupoEvalsAlumno.Average(evaluacion => evaluacion.Nota)};
+
+                
+                rta.Add(asignConEval.Key,promediosAlumnos);
+            }
 
 
+            return rta;
+        }
 
+        public Dictionary<string,IEnumerable<AlumnoPromedio>> GetTopPromedios(int topAlumnos)
+        {
+            var rta = new Dictionary<string, IEnumerable<AlumnoPromedio>>();
+
+            var diccionarioPromedios = GetPromedioAlumno();
+
+            foreach (var promedio in diccionarioPromedios)
+            {
+                var topPromedios = (from promAlumno in promedio.Value
+                                   orderby promAlumno.promedio descending
+                                   select new AlumnoPromedio {alumnoNombre = promAlumno.alumnoNombre,
+                                                              promedio = promAlumno.promedio}).Take(topAlumnos);
+
+
+                rta.Add(promedio.Key,topPromedios);
+            }                      
+
+            return rta;
+        }
     }
 }
