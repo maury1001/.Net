@@ -21,8 +21,57 @@ namespace CoreEscuela
             var listaEvalXAsig = reporteador.GetDiccionarioEvaluacionXAsig();
             var topProm = reporteador.GetTopPromedios(5);
             
-            
+            Printer.WriteTitle("Captura de una Evaluación por Consola");
 
+            var newEval = new Evaluacion();
+            string nombre,notaString;
+            float nota;
+
+            WriteLine("Ingrese el nombre de la evaluación");
+            Printer.PresioneENTER();
+            nombre = Console.ReadLine();
+
+            if(string.IsNullOrWhiteSpace(nombre))
+            {
+                Printer.WriteTitle("El nombre de la evaluación no puede estar vacío");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                WriteLine("El nombre de la evaluacion ha sido ingresado correctamente");
+            } 
+
+            WriteLine("Ingrese la nota de la evaluación");
+            Printer.PresioneENTER();
+            notaString = Console.ReadLine();
+
+            if(string.IsNullOrWhiteSpace(notaString))
+            {
+                throw new ArgumentException("El valor de la nota no puede ser vacio");
+            }
+            else
+            {
+                try
+                {
+                    newEval.Nota = float.Parse(notaString);
+                    if(newEval.Nota < 0 || newEval.Nota > 5)
+                    {
+                        throw new ArgumentOutOfRangeException("La nota debe estar entre 0 y 5");
+                    }
+                    WriteLine("La nota de la evaluacion ha sido ingresado correctamente");
+                }
+                catch(ArgumentOutOfRangeException arge)
+                {
+                    Printer.WriteTitle(arge.Message);
+                }
+                catch(Exception)
+                {
+                    Printer.WriteTitle("El valor de la nota no es un numero válido");
+                    
+                }
+                             
+            } 
+            
         }
 
         private static void AccionDelEvento(object? sender, EventArgs e)

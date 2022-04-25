@@ -18,5 +18,9 @@ namespace CoreEscuela.Util
         }
 
 
+        public static void PresioneENTER()
+        {
+            WriteTitle("Presione ENTER");
+        }
     }
 }
